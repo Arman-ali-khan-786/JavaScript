@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+        .container{
+            text-align: center;
+            padding: 24px;
+        }
+        h1{
+            margin-bottom: 28px;
+            color: blue;
+        }
+        .cnt-top{
+            display: flex;
+            /* flex-direction: column; */
+            justify-content: space-around;
+
+        }
+        .elementAdd{
+            width: 60%;
+            border: none;
+            outline: none;
+            padding: 12px;
+            font-size: 24px;
+            background-color: rgb(186, 238, 235);
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgb(54, 42, 42);
+        }
+        .btn{
+            width: 120px;
+            padding: 8px;
+            font-weight: bolder;
+            color:white;
+            font-size: 24px;
+            border: none;
+            box-shadow: 2px 2px 8px rgb(72, 109, 114);
+            border-radius: 6px;
+            background-color: rgb(104, 235, 235);
+        }
+        #add:hover{
+            background-color: green;
+        }
+        #remove:hover{
+            background-color: red;
+        }
+        .listbox{
+            margin: 20px auto;
+            padding: 10px;
+            color: rgb(21, 62, 151);
+            background-color: rgb(177, 190, 100);
+        }
+        #list{
+            background-color: aqua;
+        }
+        .items{
+            list-style-type: none;
+            padding: 12px;
+            background-color: brown;
+            margin: 10px;
+            
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1><b><u>Todo List</u></b></h1>
+        <div class="cnt-top">
+            <input type="text" id="task" class="elementAdd" placeholder="enter your task">
+            <button class="btn" id="add">Add</button>
+            <button class="btn" id="remove">Remove</button>
+        </div>
+        <div class="listbox">
+            <ul id="list">
+                
+            </ul>
+        </div>
+    </div>
+    <script>
+        showNotes();
+
+        // console.log(document.body)
+        
+        // let task = ;
+        // console.log(ul)
+        let add = document.getElementById(`add`);
+        let remove = document.getElementById(`remove`);
+        // console.log(add,remove)
+        
+
+        add.addEventListener(`click`,()=>{
+            let inputTextValue = document.getElementById(`task`);
+            let notes = localStorage.getItem('notes');
+            if(notes == null){
+                notesArr = [];
+            }else{
+                notesArr = JSON.parse(notes)
+            }
+            if(inputTextValue.value == "" || inputTextValue.value.length <=0){
+                alert("write down your task first")
+            }else{
+                notesArr.push(inputTextValue.value)
+                localStorage.setItem('notes',JSON.stringify(notesArr))
+                showNotes();
+            }
+           
+            console.log(notes)
+            
+        })
+
+
+
+        remove.addEventListener(`click`,(e)=>{
+            let inputTextValue = document.getElementById(`task`);
+            // // console.log(`removed`);
+            notes = localStorage.getItem('notes');
+            let ul = document.querySelector(`#list`);
+            if(notes == null){
+                notesArr = [];
+            }else{
+                notesArr = JSON.parse(notes)
+            }
+            if((ul.childElementCount) > 0){
+                console.log(ul.childElementCount)
+                // inputTextValue.value = "";
+                let lastChild = ul.lastElementChild
+                // console.log(lastChild.Index())
+                ul.removeChild(lastChild)
+                // notesArr.splice(ul.childElementCount , -1);
+                notesArr.pop();
+                console.log(notesArr)
+                localStorage.setItem("notes", JSON.stringify(notesArr))
+                showNotes();
+                
+            }else{
+                inputTextValue.value = "";
+                alert("Task list is already empty")
+                
+            }
+            
+           
+        })
+
+        function showNotes(){
+            notes = localStorage.getItem('notes');
+            let ul = document.querySelector(`#list`);
+            if(notes == null){
+                notesArr = [];
+            }else{
+                notesArr = JSON.parse(notes)
+            }
+            let html = "";
+            notesArr.forEach((element , index) => {
+                let inputTextValue = document.getElementById(`task`);
+                html += `<li class="items"><span>${index+1}.</span> ${element}</li>`
+                // let li = document.createElement(`li`);
+                // li.className = `items`;
+                // li.innerText = element;
+                // // console.log(`added`);
+                // // console.log(document.querySelector(`#task`).innerText)
+                // ul.append(li);
+                if(notesArr.length != 0){
+                    ul.innerHTML = html;
+                }
+                inputTextValue.value = ""; 
+
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
