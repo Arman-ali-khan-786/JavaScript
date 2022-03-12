@@ -1,0 +1,34 @@
+body{
+    background-color: rgb(160, 141, 190);
+}
+.whiteBox{
+    display: inline-block;
+    margin: 12px;
+    width: 160px;
+    height: 160px;
+    background-color: rgb(255, 255, 255);
+    padding: 8px;
+    border: 3px solid teal ;
+  
+}
+.imgBox{
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    background-image: url("https://pngimg.com/uploads/spider_man/small/spider_man_PNG70.png");
+    background-size: cover;
+    position: relative;
+    top: 1px;
+    cursor: pointer;
+}
+
+.hold{
+    border: 4px solid red;
+}
+.hide{
+    display: none;
+}
+.dashed{
+    background-color: lightgreen;
+    border-style: dashed;
+}
