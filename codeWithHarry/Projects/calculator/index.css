@@ -1,0 +1,30 @@
+.container{
+    text-align: center;
+    margin: 22px;
+}
+table{
+    margin: auto;
+}
+input{
+    border-radius: 20px;
+    border: 4px solid #142514;
+    font-size: 34px;
+    padding: 3px 6px;
+}
+button{
+    border-radius: 20px;
+    margin: 2px;
+    width: 100px;
+    font-size: 32px;
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.746);
+    color: white;
+}
+.Cal_body{
+    display: inline-block;
+    border: 6px solid rgb(0, 92, 128);
+    padding: 26px 14px;
+    border-radius: 34px;
+    background-color: rgba(0, 61, 97, 0.938);
+    box-shadow: 28px 16px 22px rgb(98, 98, 98);
+}
