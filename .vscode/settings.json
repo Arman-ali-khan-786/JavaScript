@@ -7,5 +7,6 @@
         "Khabri",
         "metacharacter",
         "settimeout"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }
